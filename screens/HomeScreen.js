@@ -3,11 +3,26 @@ import { fontSize, iconSize, spacing } from "../constants/dimensions"
 import { colors } from "../constants/colors"
 import { fontFamily } from "../constants/fonts"
 import Category from "../components/Category"
-import ProductCart from "../components/ProductCart"
+import ProductCard from "../components/ProductCard"
 import { smartWatch } from "../data/smartwatch"
+import { useState } from "react"
+import { headphones } from "../data/headphones"
 
 
 const HomeScreen = () => {
+
+  const [data, setData] = useState(smartWatch)
+  const [selectedCategory, setSelectedCategory] = useState("Smart Watch")
+  const handleUpdateCategory = (newCategory) => {
+
+    if(newCategory==="Smart Watch"){
+      setData(smartWatch)
+    }else if(newCategory==="Headphones"){
+      setData(headphones)
+    }
+    setSelectedCategory(newCategory)
+  }
+
 
   return <View style={styles.container}>
     <Text style={styles.headline}>Find your suitable watch now.</Text>
@@ -23,15 +38,18 @@ const HomeScreen = () => {
 
       </View>
     </View>
-   
-    <FlatList 
-    ListHeaderComponent={ <Category />}
-    data={smartWatch} renderItem={({ item, index }) => <ProductCart item={item}/>}
-     numColumns={2} 
-     columnWrapperStyle={{ justifyContent: 'space-between' }}
-     contentContainerStyle={{paddingBottom:250}}
-     showsVerticalScrollIndicator={false}
-     />
+
+    <FlatList
+      ListHeaderComponent={<Category
+        selectedCategory={selectedCategory}
+        handleUpdateCategory={handleUpdateCategory}
+      />}
+      data={data} renderItem={({ item, index }) => <ProductCard item={item} />}
+      numColumns={2}
+      columnWrapperStyle={{ justifyContent: 'space-between' }}
+      contentContainerStyle={{ paddingBottom: 250 }}
+      showsVerticalScrollIndicator={false}
+    />
   </View>
 }
 

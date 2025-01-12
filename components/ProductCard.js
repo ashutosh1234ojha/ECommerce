@@ -4,7 +4,7 @@ import { fontSize, spacing } from "../constants/dimensions"
 import { fontFamily } from "../constants/fonts"
 
 
-const ProductCart = ({item}) => {
+const ProductCard = ({item}) => {
    // const itemDetails= props.item
     return (
         <TouchableOpacity style={styles.container}>
@@ -63,4 +63,4 @@ const styles = StyleSheet.create({
     
 })
 
-export default ProductCart
+export default ProductCard

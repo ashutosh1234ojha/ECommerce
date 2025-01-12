@@ -11,9 +11,10 @@ const Category = () => {
         setSelectedCategory(category)
     }
     return (
-        <FlatList data={category} renderItem={({ item, index }) => (
+        <FlatList
+         data={category} renderItem={({ item, index }) => (
             <TouchableOpacity onPress={() => { setSelectedCategory(item.name) }}>
-                <Text style={[styles.categoryText, selectedCategory===item.name&&{color:colors.purple}]}>{item.name}</Text>
+                <Text style={[styles.categoryText, selectedCategory === item.name && { color: colors.purple }]}>{item.name}</Text>
                 {
                     (selectedCategory === item.name) ? <View style={styles.underline} /> : null
 
@@ -26,6 +27,7 @@ const Category = () => {
             ItemSeparatorComponent={
                 <View style={{ paddingHorizontal: spacing.sm }} />
             }
+            showsHorizontalScrollIndicator={false}
 
         />
     )

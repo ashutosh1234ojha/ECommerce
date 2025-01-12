@@ -1,8 +1,10 @@
-import { Image, StyleSheet, Text, TextInput, View } from "react-native"
+import { FlatList, Image, StyleSheet, Text, TextInput, View } from "react-native"
 import { fontSize, iconSize, spacing } from "../constants/dimensions"
 import { colors } from "../constants/colors"
 import { fontFamily } from "../constants/fonts"
 import Category from "../components/Category"
+import ProductCart from "../components/ProductCart"
+import { smartWatch } from "../data/smartwatch"
 
 
 const HomeScreen = () => {
@@ -11,7 +13,7 @@ const HomeScreen = () => {
     <Text style={styles.headline}>Find your suitable watch now.</Text>
     <View style={styles.mainInputContainer}>
       <View style={styles.inputWrapper}>
-      <Image style={styles.logo} source={require("../src/assets/search.png")} />
+        <Image style={styles.logo} source={require("../src/assets/search.png")} />
 
         <TextInput style={styles.textInput} placeholder="Search product" placeholderTextColor={colors.placeholderText} />
       </View>
@@ -21,13 +23,20 @@ const HomeScreen = () => {
 
       </View>
     </View>
-    <Category/>
+   
+    <FlatList 
+    ListHeaderComponent={ <Category />}
+    data={smartWatch} renderItem={({ item, index }) => <ProductCart item={item}/>}
+     numColumns={2} 
+     columnWrapperStyle={{ justifyContent: 'space-between' }}
+     contentContainerStyle={{paddingBottom:250}}
+     showsVerticalScrollIndicator={false}
+     />
   </View>
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: colors.background,
     padding: spacing.md
   },
@@ -58,8 +67,8 @@ const styles = StyleSheet.create({
   textInput: {
     flex: 1,
     paddingHorizontal: spacing.md,
-    fontSize:spacing.md,
-    fontFamily:fontFamily.Medium
+    fontSize: spacing.md,
+    fontFamily: fontFamily.Medium
 
 
   },

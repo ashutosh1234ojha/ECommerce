@@ -2,12 +2,21 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native"
 import { colors } from "../constants/colors"
 import { fontSize, spacing } from "../constants/dimensions"
 import { fontFamily } from "../constants/fonts"
+import { useNavigation } from "@react-navigation/native";
+
 
 
 const ProductCard = ({item}) => {
    // const itemDetails= props.item
+   const navigation = useNavigation();
+
+   const handleProductDetailsScreen = () => {
+     navigation.navigate("PRODUCT_DETAILS", { item });
+   };
+  
     return (
-        <TouchableOpacity style={styles.container}>
+        <TouchableOpacity style={styles.container}    onPress={handleProductDetailsScreen}
+        >
             <View style={styles.imageWrapper}>
                 <Image source={{ uri: item.image }} style={styles.productImage} />
             </View>

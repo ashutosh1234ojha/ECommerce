@@ -2,6 +2,7 @@ import { Image, StyleSheet, Text, TextInput, View } from "react-native"
 import { fontSize, iconSize, spacing } from "../constants/dimensions"
 import { colors } from "../constants/colors"
 import { fontFamily } from "../constants/fonts"
+import Category from "../components/Category"
 
 
 const HomeScreen = () => {
@@ -20,6 +21,7 @@ const HomeScreen = () => {
 
       </View>
     </View>
+    <Category/>
   </View>
 }
 

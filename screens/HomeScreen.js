@@ -10,8 +10,9 @@ const HomeScreen = () => {
     <Text style={styles.headline}>Find your suitable watch now.</Text>
     <View style={styles.mainInputContainer}>
       <View style={styles.inputWrapper}>
-        <TextInput style={styles.textInput} placeholderText="Search product" placeholderTextColor={colors.placeholderText} />
-        <Image style={styles.logo} source={require("../src/assets/search.png")} />
+      <Image style={styles.logo} source={require("../src/assets/search.png")} />
+
+        <TextInput style={styles.textInput} placeholder="Search product" placeholderTextColor={colors.placeholderText} />
       </View>
 
       <View style={styles.categoryContainer}>
@@ -36,17 +37,16 @@ const styles = StyleSheet.create({
   mainInputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginVertical: spacing.mds
+    marginVertical: spacing.xl
   },
   inputWrapper: {
     flex: 1,
-
     flexDirection: 'row',
     borderWidth: 2,
     alignItems: 'center',
     borderColor: colors.placeholderText,
     borderRadius: 44,
-    paddingHorizontal: spacing.md
+    paddingHorizontal: spacing.md,
 
   },
   logo: {

@@ -15,5 +15,6 @@ export const fontSize={
 }
 
 export const iconSize={
-    sm:20
+    sm:20,
+    md:24
 }

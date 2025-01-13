@@ -1,20 +1,20 @@
 import { useRoute } from "@react-navigation/native"
 import { StyleSheet, View, Text } from "react-native"
-// import Ionicons from '@react-native-vector-icons/ionicons';
-import { iconSize } from "../constants/dimensions"
-import FontAwesome6 from '@react-native-vector-icons/fontawesome6';
+import Header from "../components/Header"
 
 
 
 
 
 const ProductDetailsScreen = () => {
-    // const item = useRoute().params
+    const item = useRoute().params.item
+    
+
     return (
         <View>
-            <Text>screendd</Text>
-     <FontAwesome6 name="arrow-left" iconStyle="solid" />
-            </View>
+        <Header/>
+        <Text>{item.name}</Text>
+        </View>
     )
 
 }

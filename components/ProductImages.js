@@ -35,6 +35,7 @@ const ProductImages = ({ images }) => {
 
             }}
             onViewableItemsChanged={onViewRef.current}
+            keyExtractor={(item,index)=>index}
 
                 horizontal={true}
                 pagingEnabled={true}
@@ -42,14 +43,15 @@ const ProductImages = ({ images }) => {
                 snapToAlignment="center"
                 snapToInterval={screenWidth}
                 decelerationRate={"fast"}
-                keyExtractor={(item,index)=>index}
 
             />
 
             <View style={styles.pagination}>
                 {
                     images.map((_, index) => (
-                        <View style={[styles.dot,index===activeSlide&&{width:20,borderRadius:32},{backgroundColor:index==activeSlide?colors.purple:colors.gray} ]} />
+                        <View
+                        key={index}
+                         style={[styles.dot,index===activeSlide&&{width:20,borderRadius:32},{backgroundColor:index==activeSlide?colors.purple:colors.gray} ]} />
                     ))
                 }
             </View>

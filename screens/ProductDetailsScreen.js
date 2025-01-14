@@ -7,6 +7,7 @@ import { fontSize, iconSize, spacing } from "../constants/dimensions";
 import { colors } from "../constants/colors";
 import { fontFamily } from "../constants/fonts";
 import { useState } from "react"
+import CartButton from "../components/CartButton";
 
 
 
@@ -39,7 +40,7 @@ const ProductDetailsScreen = () => {
 
     return (
         <View style={styles.container}>
-        <ScrollView style={styles.scrollViewContainer}>
+        <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollViewContainer}>
         <Header />
         <ProductImages images={item.images} />
         <View style={styles.titleContainer}>
@@ -106,7 +107,9 @@ const ProductDetailsScreen = () => {
 
        
         </ScrollView>
-      
+
+        <CartButton/>
+
         </View>
 
     )

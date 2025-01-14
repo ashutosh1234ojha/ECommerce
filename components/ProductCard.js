@@ -7,14 +7,9 @@ import { useNavigation } from "@react-navigation/native";
 
 
 const ProductCard = ({item}) => {
-   // const itemDetails= props.item
    const navigation = useNavigation();
 
    const handleProductDetailsScreen = () => {
-    console.log("ListMyLog")
-    console.log({item})
-
-
      navigation.navigate("PRODUCT_DETAILS", { item });
    };
   

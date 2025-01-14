@@ -1,4 +1,4 @@
-import { useRoute } from "@react-navigation/native"
+import { useNavigation, useRoute } from "@react-navigation/native"
 import { StyleSheet, View, Text, TouchableOpacity } from "react-native"
 // import Ionicons from '@react-native-vector-icons/ionicons';
 import { iconSize } from "../constants/dimensions"
@@ -9,10 +9,11 @@ import FontAwesome6 from '@react-native-vector-icons/fontawesome6';
 
 
 const Header = () => {
+    const navigation= useNavigation()
 
     return (
         <View style={styles.container} >
-            <TouchableOpacity style={styles.iconStyle}>
+            <TouchableOpacity onPress={()=>{navigation.goBack()}} style={styles.iconStyle}>
                 <FontAwesome6 name="arrow-left" iconStyle="solid" size={iconSize.md} />
             </TouchableOpacity>
             <TouchableOpacity style={styles.iconStyle}>

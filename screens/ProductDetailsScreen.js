@@ -1,5 +1,5 @@
 import { useRoute } from "@react-navigation/native"
-import { StyleSheet, View, Text, TouchableOpacity, FlatList } from "react-native"
+import { StyleSheet, View, Text, TouchableOpacity, FlatList, ScrollView } from "react-native"
 import Header from "../components/Header"
 import ProductImages from "../components/ProductImages"
 import FontAwesome6 from '@react-native-vector-icons/fontawesome6';
@@ -34,47 +34,79 @@ const ProductDetailsScreen = () => {
     console.log(item.images[0])
 
     const [selectedColor, setSelectedColor] = useState("")
+    const [selectedTab, setSelectedTab] = useState("Details")
+
 
     return (
-        <View>
-            <Header />
-            <ProductImages images={item.images} />
-            <View style={styles.titleContainer}>
-                <View style={styles.titleWrapper}>
-                    <Text style={styles.productTitle}>{item.name}</Text>
-                    <Text style={styles.brand}>{item.brand}</Text>
+        <View style={styles.container}>
+        <ScrollView style={styles.scrollViewContainer}>
+        <Header />
+        <ProductImages images={item.images} />
+        <View style={styles.titleContainer}>
+            <View style={styles.titleWrapper}>
+                <Text style={styles.productTitle}>{item.name}</Text>
+                <Text style={styles.brand}>{item.brand}</Text>
 
-                </View>
-
-                <View style={styles.ratingWrapper}>
-                    <FontAwesome6 name="star" iconStyle="solid" size={iconSize.sm} color={colors.yellow} />
-                    <Text style={styles.ratingText}>4.8</Text>
-
-                </View>
             </View>
 
-            <View style={styles.colorContinaer}>
-                <Text style={styles.colorsHeading}>Colors</Text>
-                <FlatList data={colorData} renderItem={({ item }) => {
-                    return (
+            <View style={styles.ratingWrapper}>
+                <FontAwesome6 name="star" iconStyle="solid" size={iconSize.sm} color={colors.yellow} />
+                <Text style={styles.ratingText}>4.8</Text>
 
-                        <TouchableOpacity onPress={() => { setSelectedColor(item.colorValue) }} 
+            </View>
+        </View>
+
+        <View style={styles.colorContinaer}>
+            <Text style={styles.colorsHeading}>Colors</Text>
+            <FlatList data={colorData} renderItem={({ item }) => {
+                return (
+
+                    <TouchableOpacity onPress={() => { setSelectedColor(item.colorValue) }}
                         style={[styles.selectColorContainer, item.colorValue === selectedColor && { borderColor: colors.purple }]}>
-                            <View style={[styles.circleColor, { backgroundColor: item.colorValue }]} />
+                        <View style={[styles.circleColor, { backgroundColor: item.colorValue }]} />
 
 
-                            <Text style={styles.colorText}>{item.colorName}</Text>
-                        </TouchableOpacity>
-                    )
-                }}
-                    horizontal
-                    ItemSeparatorComponent={() => (<View
-                        style={{ width: spacing.sm }}
-                    />)}
-                />
+                        <Text style={styles.colorText}>{item.colorName}</Text>
+                    </TouchableOpacity>
+                )
+            }}
+                horizontal
+                ItemSeparatorComponent={() => (<View
+                    style={{ width: spacing.sm }}
+                />)}
+            />
 
 
-            </View>
+        </View>
+
+
+        <View style={styles.detailsReviewTabs}>
+            <TouchableOpacity onPress={()=>{setSelectedTab("Details")}}>
+                <Text style={[styles.tabText, selectedTab === "Details" && { color: colors.purple }]}>Details</Text>
+
+                {
+                    selectedTab === "Details" ? <View style={styles.underLine} /> : null
+                }               
+                 </TouchableOpacity>
+
+            <TouchableOpacity onPress={()=>{setSelectedTab("Review")}}>
+                <Text style={[styles.tabText, selectedTab === "Review" && { color: colors.purple }]}>Review</Text>
+
+                {
+                    selectedTab === "Review" ? <View style={styles.underLine} /> : null
+                }
+            </TouchableOpacity>
+        </View>
+
+        <Text style={styles.detailsContent}>
+        {
+            selectedTab==="Review"? item.review:item.details
+        }
+        </Text>
+
+       
+        </ScrollView>
+      
         </View>
 
     )
@@ -153,7 +185,40 @@ const styles = StyleSheet.create({
         fontFamily: fontFamily.Medium,
         color: colors.black
 
+    },
+    detailsReviewTabs: {
+        flexDirection: 'row',
+        paddingTop: spacing.lg,
+        gap: spacing.lg
+    },
+    tabText: {
+        fontSize: fontSize.md,
+        fontFamily: fontFamily.Medium,
+        color: colors.gray
+    },
+    underLine: {
+        borderBottomColor: colors.purple,
+        borderBottomWidth: 2,
+        width: "50%",
+        marginTop: spacing.xs
+    },
+    detailsContent:{
+        color:colors.gray,
+        fontFamily:fontFamily.Regular,
+        fontSize:fontSize.md,
+        padding:spacing.md,
+        paddingBottom:100
+
+    },
+    scrollViewContainer:{
+        padding:spacing.md,
+
+    },
+    container:{
+        flex:1,
+        backgroundColor:colors.background
     }
+
 
 })
 

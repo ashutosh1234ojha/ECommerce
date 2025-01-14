@@ -3,5 +3,8 @@ export const colors={
     black:'#100D25',
     placeholderText:'#DDDEE3',
     purple:'#5B41FF',
-    gray:'#9095A6'
+    gray:'#9095A6',
+    yellow:'#FFD33C',
+    lavender:'#F3ECFF'
+
 }

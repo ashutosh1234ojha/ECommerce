@@ -2,7 +2,6 @@ import { useRoute } from "@react-navigation/native"
 import { StyleSheet, View, Text, TouchableOpacity, Image, Dimensions, FlatList } from "react-native"
 // import Ionicons from '@react-native-vector-icons/ionicons';
 import { iconSize, spacing } from "../constants/dimensions"
-import FontAwesome6 from '@react-native-vector-icons/fontawesome6';
 import { colors } from "../constants/colors";
 import { useState ,useRef} from "react"
 

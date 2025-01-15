@@ -30,24 +30,24 @@ const CartButton = () => {
 
 const styles = StyleSheet.create({
     container: {
-       
         justifyContent: 'center',
         alignItems: 'center',
         paddingVertical: spacing.md,
-        
+
+
     },
     addToCart: {
-        padding: 20,
+        padding: 10,
         color: colors.background,
-        fontFamily:fontFamily.Bold
+        fontFamily: fontFamily.Bold
     },
     addToCartBtn: {
         width: "90%",
         padding: spacing.md,
         justifyContent: 'center',
         alignItems: 'center',
-        flexDirection:'row',
-        borderRadius:spacing.md
+        flexDirection: 'row',
+        borderRadius: spacing.md
 
     }
 })

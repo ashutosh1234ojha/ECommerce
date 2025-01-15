@@ -210,15 +210,16 @@ const styles = StyleSheet.create({
         fontFamily:fontFamily.Regular,
         fontSize:fontSize.md,
         padding:spacing.md,
-        paddingBottom:100
+        paddingBottom:50
 
     },
     scrollViewContainer:{
+       flex:1,
         padding:spacing.md,
 
     },
     container:{
-        flex:1,
+      flex:1,
         backgroundColor:colors.background
     }
 
